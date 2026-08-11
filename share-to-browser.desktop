@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Share to Browser
+Comment=Opens a URL received via the share-to-browser:// scheme, letting you pick the target browser via zenity
+Exec=__HANDLER_PATH__ %u
+NoDisplay=true
+StartupNotify=false
+MimeType=x-scheme-handler/share-to-browser;
