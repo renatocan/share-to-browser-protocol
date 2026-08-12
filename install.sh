@@ -39,6 +39,7 @@ cat <<EOF
 Installed:
   $INSTALL_DIR/share_to_browser_handler.py
   $INSTALL_DIR/share_to_browser.sh
+  $INSTALL_DIR/grab_active_url.sh
   $APPS_DIR/share-to-browser.desktop
 
 Registered as default handler for share-to-browser:// -> $REGISTERED
