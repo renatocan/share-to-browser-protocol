@@ -54,13 +54,13 @@ OLD_CLIP="$(xclip -selection clipboard -o 2>/dev/null || true)"
 xdotool windowactivate --sync "$WIN_ID"
 sleep 0.2
 
-xdotool key ctrl+l
+xdotool key --clearmodifiers ctrl+l
 sleep 0.2
-xdotool key ctrl+a
+xdotool key --clearmodifiers ctrl+a
 sleep 0.1
-xdotool key ctrl+c
+xdotool key --clearmodifiers ctrl+c
 sleep 0.5
-xdotool key Escape
+xdotool key --clearmodifiers Escape
 
 URL="$(xclip -selection clipboard -o 2>/dev/null || true)"
 
@@ -74,6 +74,3 @@ fi
 
 exec "$SHARE_SCRIPT" "$URL"
 
-## Acknowledgements
-
-This project was developed with the assistance of [Claude](https://claude.ai) by [Anthropic](https://www.anthropic.com).

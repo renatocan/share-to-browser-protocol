@@ -160,3 +160,7 @@ share-to-browser-protocol/
 ├── share_to_browser_handler.py
 └── share_to_browser.sh
 ```
+
+## Acknowledgements
+
+This project was developed with the assistance of [Claude](https://claude.ai) by [Anthropic](https://www.anthropic.com).
