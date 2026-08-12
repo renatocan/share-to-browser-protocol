@@ -51,12 +51,16 @@ esac
 OLD_CLIP="$(xclip -selection clipboard -o 2>/dev/null || true)"
 
 # Focus the address bar, select all, copy -- then leave without navigating.
-xdotool key --window "$WIN_ID" ctrl+l
-sleep 0.15
-xdotool key --window "$WIN_ID" ctrl+a
-xdotool key --window "$WIN_ID" ctrl+c
-sleep 0.15
-xdotool key --window "$WIN_ID" Escape
+xdotool windowactivate --sync "$WIN_ID"
+sleep 0.2
+
+xdotool key ctrl+l
+sleep 0.2
+xdotool key ctrl+a
+sleep 0.1
+xdotool key ctrl+c
+sleep 0.5
+xdotool key Escape
 
 URL="$(xclip -selection clipboard -o 2>/dev/null || true)"
 
