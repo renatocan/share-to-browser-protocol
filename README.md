@@ -82,6 +82,45 @@ use by probing `$PATH` for common browsers if the file doesn't exist yet.
 xdg-open 'share-to-browser://open?url=https://example.com'
 ```
 
+Or skip the URI-scheme layer entirely and call the script directly:
+
+```sh
+~/.local/share/share-to-browser/share_to_browser.sh 'https://example.com'
+```
+
+## Triggering it from a keyboard shortcut instead of a bookmarklet
+
+`grab_active_url.sh` reads the URL out of the currently focused
+browser window's address bar (via simulated keystrokes + clipboard) and
+feeds it straight to `share_to_browser.sh` -- no click on a bookmark
+required. Works with Firefox, Brave, Chrome, and Chromium: all four use
+Ctrl+L to focus the address bar, so the same keystroke sequence covers
+every one of them -- only the window-class detection differs per
+browser, and the script identifies whichever is active automatically.
+
+Requires `xdotool` and `xclip`:
+
+```sh
+sudo pacman -S xdotool xclip
+```
+
+Bind it to a shortcut, e.g. in XFCE: *Settings > Keyboard > Application
+Shortcuts > Add*, with the command set to:
+
+```
+~/.local/share/share-to-browser/grab_active_url.sh
+```
+
+(after running `install.sh`, which copies it alongside the other
+scripts). Focus a Firefox window, hit the shortcut, and the zenity
+picker appears with that tab's URL -- no bookmarklet, no browser
+interaction beyond having the tab focused.
+
+Note: this relies on X11 keystroke simulation (`xdotool`), so it won't
+work under native Wayland without an XWayland-compatible substitute
+(e.g. `wtype`/`ydotool`), and it temporarily overwrites and restores your
+clipboard.
+
 Check `xdg-mime query default x-scheme-handler/share-to-browser` if
 nothing happens -- it should print `share-to-browser.desktop`.
 
@@ -121,7 +160,3 @@ share-to-browser-protocol/
 ├── share_to_browser_handler.py
 └── share_to_browser.sh
 ```
-
-## Acknowledgements
-
-This project was developed with the assistance of [Claude](https://claude.ai) by [Anthropic](https://www.anthropic.com).

@@ -20,7 +20,8 @@ echo "==> Installing scripts to $INSTALL_DIR"
 mkdir -p "$INSTALL_DIR" "$APPS_DIR"
 cp "$SRC_DIR/share_to_browser_handler.py" "$INSTALL_DIR/"
 cp "$SRC_DIR/share_to_browser.sh" "$INSTALL_DIR/"
-chmod +x "$INSTALL_DIR/share_to_browser_handler.py" "$INSTALL_DIR/share_to_browser.sh"
+cp "$SRC_DIR/grab_active_url.sh" "$INSTALL_DIR/"
+chmod +x "$INSTALL_DIR/share_to_browser_handler.py" "$INSTALL_DIR/share_to_browser.sh" "$INSTALL_DIR/grab_active_url.sh"
 
 echo "==> Registering protocol handler"
 sed "s|__HANDLER_PATH__|$INSTALL_DIR/share_to_browser_handler.py|" \
